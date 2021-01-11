@@ -31,7 +31,7 @@ int main(int argc,char **argv)
 	{
 		t=MPI_Wtime()-t;
 		pi=(double)reduced_count/(double)reduced_iter * 4;
-		printf("\npi: %lf time : %lf",pi,t);
+		printf("\npi: %lf time : %lf\n",pi,t);
 	}	
 	MPI_Finalize();
 	return 0;

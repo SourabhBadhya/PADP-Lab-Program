@@ -4,7 +4,7 @@
 #include<math.h>
 
 #define CLUSTER_SIZE 4
-#define POINTS_SIZE 10000
+#define POINTS_SIZE 5
 #define PRINT_POINTS 1
 
 int cluster[CLUSTER_SIZE][2] = {{75,25},{25,25},{25,75},{75,75}};

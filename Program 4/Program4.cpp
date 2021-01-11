@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 	}
 	double t=omp_get_wtime();
 	omp_set_num_threads(nt);
-	#pragma omp parallel for private(y,color,red,blue,green,tmp) schedule(guided)
+	#pragma omp parallel for private(y,color,red,blue,green,tmp) schedule(dynamic)
 	for(x=0;x<w;x++)
 		for(y=0;y<h;y++)
 		{
@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 			blue=gdImageBlue(img,color);
 			tmp=(red+green+blue)/3;
 			red=green=blue=tmp;
-			/*if(tid==0)
+			if(tid==0)
 			{
 				color=gdImageColorAllocate(img,red,0,0);
 				gdImageSetPixel(img,x,y,color);
@@ -60,14 +60,14 @@ int main(int argc, char *argv[])
 			{
 				color=gdImageColorAllocate(img,0,0,0);
 				gdImageSetPixel(img,x,y,color);
-			}*/
+			}
 
-			color = gdImageColorAllocate(img,tmp,tmp,tmp);
+			//color = gdImageColorAllocate(img,tmp,tmp,tmp);
 			
-			gdImageSetPixel(img,x,y,color);
+			//gdImageSetPixel(img,x,y,color);
 		}	
 	t=omp_get_wtime()-t;
-	printf("\ntime taken : %lf threads : %d",t,nt);
+	printf("\ntime taken : %lf threads : %d\n",t,nt);
 	if((fp=fopen(oname,"w"))==NULL)
 		error(1,0,"error : fopen : %s",oname);
 	else
